@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Churn Risk Console</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="shell">
+
+        <header class="masthead">
+            <h1>Churn Risk Console</h1>
+            <p>Assess a customer's likelihood to leave, and see what's driving the score.</p>
+        </header>
+
+        <div class="layout">
+
+            <!-- LEFT: FORM -->
+            <form id="churnForm" class="profile-form">
+
+                <section class="field-group">
+                    <h2>Profile</h2>
+                    <div class="field-row">
+                        <label>Gender
+                            <select name="Gender">
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                        </label>
+                        <label>Senior citizen
+                            <select name="Senior_Citizen">
+                                <option>No</option>
+                                <option>Yes</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="field-row">
+                        <label>Partner
+                            <select name="Partner">
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </label>
+                        <label>Dependents
+                            <select name="Dependents">
+                                <option>No</option>
+                                <option>Yes</option>
+                            </select>
+                        </label>
+                    </div>
+                </section>
+
+                <section class="field-group">
+                    <h2>Account</h2>
+                    <div class="field-row">
+                        <label>Tenure (months)
+                            <input type="number" name="Tenure_Months" value="5" min="0" required>
+                        </label>
+                        <label>Contract
+                            <select name="Contract">
+                                <option>Month-to-month</option>
+                                <option>One year</option>
+                                <option>Two year</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="field-row">
+                        <label>Paperless billing
+                            <select name="Paperless_Billing">
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </label>
+                        <label>Payment method
+                            <select name="Payment_Method">
+                                <option>Electronic check</option>
+                                <option>Mailed check</option>
+                                <option>Bank transfer (automatic)</option>
+                                <option>Credit card (automatic)</option>
+                            </select>
+                        </label>
+                    </div>
+                </section>
+
+                <section class="field-group">
+                    <h2>Services</h2>
+                    <div class="field-row">
+                        <label>Phone service
+                            <select name="Phone_Service">
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </label>
+                        <label>Multiple lines
+                            <select name="Multiple_Lines">
+                                <option>No</option>
+                                <option>Yes</option>
+                                <option>No phone service</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="field-row">
+                        <label>Internet service
+                            <select name="Internet_Service">
+                                <option>Fiber optic</option>
+                                <option>DSL</option>
+                                <option>No</option>
+                            </select>
+                        </label>
+                        <label>Online security
+                            <select name="Online_Security">
+                                <option>No</option>
+                                <option>Yes</option>
+                                <option>No internet service</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="field-row">
+                        <label>Online backup
+                            <select name="Online_Backup">
+                                <option>No</option>
+                                <option>Yes</option>
+                                <option>No internet service</option>
+                            </select>
+                        </label>
+                        <label>Device protection
+                            <select name="Device_Protection">
+                                <option>No</option>
+                                <option>Yes</option>
+                                <option>No internet service</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="field-row">
+                        <label>Tech support
+                            <select name="Tech_Support">
+                                <option>No</option>
+                                <option>Yes</option>
+                                <option>No internet service</option>
+                            </select>
+                        </label>
+                        <label>Streaming TV
+                            <select name="Streaming_TV">
+                                <option>Yes</option>
+                                <option>No</option>
+                                <option>No internet service</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="field-row">
+                        <label>Streaming movies
+                            <select name="Streaming_Movies">
+                                <option>Yes</option>
+                                <option>No</option>
+                                <option>No internet service</option>
+                            </select>
+                        </label>
+                        <span></span>
+                    </div>
+                </section>
+
+                <section class="field-group">
+                    <h2>Billing</h2>
+                    <div class="field-row">
+                        <label>Monthly charges
+                            <input type="number" step="0.1" name="Monthly_Charges" value="85.5" required>
+                        </label>
+                        <label>Total charges
+                            <input type="number" step="0.1" name="Total_Charges" value="425.0" required>
+                        </label>
+                    </div>
+                </section>
+
+                <button type="submit" id="submitBtn">Run assessment</button>
+            </form>
+
+            <!-- RIGHT: RISK CONSOLE -->
+            <aside class="console">
+                <div class="console-inner">
+
+                    <div class="gauge-wrap">
+                        <svg viewBox="0 0 200 120" class="gauge">
+                            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#233040" stroke-width="14"
+                                stroke-linecap="round" />
+                            <path id="gaugeFill" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#F2A93B"
+                                stroke-width="14" stroke-linecap="round" stroke-dasharray="251.2"
+                                stroke-dashoffset="251.2" />
+                        </svg>
+                        <div class="gauge-readout">
+                            <span id="probValue">—</span>
+                            <span class="gauge-label">churn probability</span>
+                        </div>
+                    </div>
+
+                    <div id="riskTag" class="risk-tag idle">Awaiting input</div>
+
+                    <div class="factors">
+                        <h3>Signal read</h3>
+                        <ul id="factorList">
+                            <li class="muted">Run an assessment to see the drivers behind this score.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </aside>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

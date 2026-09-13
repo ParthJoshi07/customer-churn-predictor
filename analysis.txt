@@ -1,0 +1,31 @@
+1. overall churn rate is 27 %.
+
+5200 customers is stay and 1900 customer is churned.
+This will have to be handled during model training.
+
+2. Churn vs contract 
+
+Big insight: Customer with month to month contract are more likely to churn. (1650 out of 3900)
+2 Years: almost 0 churn. (50 out of 1700).
+( this is strong indicator for model training )
+
+3. Churn vs Tenure
+new customers are more likely to churn. less then 6 months. 
+then for instance tenure increases churn decreases.
+loyal customers are rare likely to churn.
+
+4. churn vs monthly charges
+
+the median monthly charge for customer who churn is higher than of these who stay . this 
+means that customers with higher bills are more likely to churn.
+
+5. correlation heatmap
+
+tenure months and churn is correlation -0.35
+this means that the longer the customers stay the less likely they are to churn.
+
+Monthly charges is +0.19 less positive.
+Total charges is -0.2 less negative because it is attach to the tenure.
+
+tenure and total charge both is 0.83 correlation.
+both is very overlapping.
