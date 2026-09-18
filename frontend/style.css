@@ -1,293 +1,1526 @@
 :root {
-    --bg: #0F1720;
-    --panel: #16212C;
-    --panel-raised: #1B2733;
-    --border: #263341;
-    --text: #E8EDF2;
-    --muted: #8698A9;
-    --amber: #F2A93B;
-    --green: #3FB88B;
-    --red: #E25C5C;
+    --bg: #f8fafc;
+    --white: #ffffff;
+
+    --navy: #101b2b;
+    --text: #172235;
+    --muted: #637083;
+
+    --blue: #2f80ed;
+    --blue-light: #eaf3ff;
+
+    --border: #dfe6ee;
+
+    --green: #79c900;
+    --green-bg: #e9f8e8;
+
+    --amber: #a96200;
+    --amber-bg: #fff3dd;
+
+    --red: #c03939;
+    --red-bg: #fff0f0;
 }
+
+
+/* =========================================
+   RESET
+========================================= */
 
 * {
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
+
     min-height: 100vh;
+
+    background: var(--bg);
+
+    color: var(--text);
+
+    font-family: "DM Sans", sans-serif;
+
+    -webkit-font-smoothing: antialiased;
 }
 
-.shell {
-    max-width: 1080px;
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+
+/* =========================================
+   APP CONTAINER
+========================================= */
+
+.app-shell {
+    width: min(1140px, calc(100% - 60px));
+
     margin: 0 auto;
-    padding: 48px 24px 80px;
+
+    padding: 26px 0 40px;
 }
 
-.masthead h1 {
-    font-family: 'Fraunces', serif;
+
+/* =========================================
+   HEADER
+========================================= */
+
+.topbar {
+    height: 58px;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid #dfe5ec;
+}
+
+
+.brand h1 {
+    margin: 0;
+
+    color: #111c2c;
+
+    font-family: "IBM Plex Mono", monospace;
+
+    font-size: 13px;
+
     font-weight: 600;
-    font-size: 34px;
-    letter-spacing: -0.01em;
-    margin: 0 0 8px;
+
+    letter-spacing: 0.16em;
 }
 
-.masthead p {
-    color: var(--muted);
-    margin: 0 0 40px;
-    font-size: 15px;
-    max-width: 460px;
+
+.top-nav {
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding-top: 2px;
+
+    color: #657287;
+
+    font-size: 12px;
+
+    letter-spacing: 0.05em;
 }
 
-.layout {
+
+.top-nav i {
+    width: 1px;
+
+    height: 15px;
+
+    background: #bfc8d3;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.page-intro {
+    position: relative;
+
+    min-height: 375px;
+
+    overflow: hidden;
+
+    padding: 48px 0 20px;
+}
+
+
+/* =========================================
+   HERO CONTENT
+========================================= */
+
+.intro-content {
+    position: relative;
+
+    z-index: 5;
+
+    width: 690px;
+}
+
+
+.assessment-label {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 17px;
+}
+
+
+.assessment-label span {
+    color: var(--blue);
+
+    font-family: "IBM Plex Mono", monospace;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.16em;
+}
+
+
+.assessment-label i {
+    position: relative;
+
+    width: 39px;
+
+    height: 1px;
+
+    background: #9dc8ff;
+}
+
+
+.assessment-label i::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: -1px;
+
+    width: 16px;
+
+    height: 2px;
+
+    background: var(--blue);
+}
+
+
+/* =========================================
+   HERO TITLE
+========================================= */
+
+.page-intro h2 {
+    max-width: 680px;
+
+    margin: 0;
+
+    color: #101a29;
+
+    font-size: clamp(46px, 5vw, 68px);
+
+    line-height: 0.98;
+
+    letter-spacing: -0.055em;
+
+    font-weight: 700;
+}
+
+
+.page-intro h2 span {
+    display: block;
+
+    color: var(--blue);
+}
+
+
+/* =========================================
+   HERO DESCRIPTION
+========================================= */
+
+.page-intro > .intro-content > p {
+    width: 640px;
+
+    margin: 17px 0 0;
+
+    color: #627086;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================
+   HERO BENEFITS
+========================================= */
+
+.hero-benefits {
+    display: flex;
+
+    align-items: center;
+
+    margin-top: 26px;
+}
+
+
+.benefit {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 190px;
+}
+
+
+.benefit-icon {
+    width: 44px;
+    height: 44px;
+
+    flex-shrink: 0;
+
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 28px;
+
+    place-items: center;
+
+    background: #e8f2ff;
+
+    border-radius: 50%;
+}
+
+
+.benefit-icon svg {
+    width: 23px;
+    height: 23px;
+
+    stroke: var(--blue);
+
+    stroke-width: 1.7;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+
+.benefit strong {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #101a29;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.benefit span {
+    display: block;
+
+    color: #637083;
+
+    font-size: 11px;
+}
+
+
+.benefit-divider {
+    width: 1px;
+
+    height: 43px;
+
+    margin: 0 25px;
+
+    background: #d5dce5;
+}
+
+
+/* =========================================
+   MODEL CARD
+========================================= */
+
+.model-card {
+    position: absolute;
+
+    z-index: 6;
+
+    top: 74px;
+
+    right: 4px;
+
+    width: 236px;
+
+    padding: 25px 27px;
+
+    background: rgba(255, 255, 255, 0.84);
+
+    border: 1px solid #dce5ef;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 12px 35px rgba(43, 77, 112, 0.07);
+
+    backdrop-filter: blur(5px);
+}
+
+
+.model-label {
+    color: #69778a;
+
+    font-family: "IBM Plex Mono", monospace;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.14em;
+}
+
+
+.model-line {
+    width: 72px;
+
+    height: 1px;
+
+    margin-top: 8px;
+
+    background: #d8e0e9;
+}
+
+
+.model-card h3 {
+    margin: 12px 0 4px;
+
+    color: #111c2c;
+
+    font-size: 22px;
+
+    line-height: 1.1;
+
+    font-weight: 700;
+
+    letter-spacing: -0.025em;
+}
+
+
+.model-card > p {
+    width: auto;
+
+    margin: 0;
+
+    color: #8793a3;
+
+    font-size: 14px;
+}
+
+
+.api-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-top: 20px;
+
+    padding: 11px 12px;
+
+    background: #eaf8ef;
+
+    border-radius: 8px;
+
+    color: #304d3b;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+}
+
+
+.api-dot {
+    width: 9px;
+    height: 9px;
+
+    flex-shrink: 0;
+
+    background: var(--green);
+
+    border-radius: 50%;
+}
+
+
+/* =========================================
+   HERO CURVES
+========================================= */
+
+.hero-arc {
+    position: absolute;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+}
+
+
+.hero-arc-one {
+    width: 610px;
+    height: 610px;
+
+    right: -365px;
+    top: -205px;
+
+    background: rgba(225, 238, 255, 0.28);
+
+    border: 1px solid rgba(74, 144, 226, 0.07);
+}
+
+
+.hero-arc-two {
+    width: 475px;
+    height: 475px;
+
+    right: -260px;
+    top: -70px;
+
+    border: 55px solid rgba(221, 235, 255, 0.45);
+}
+
+
+.hero-arc-three {
+    width: 350px;
+    height: 350px;
+
+    right: -170px;
+    top: 45px;
+
+    border: 45px solid rgba(213, 230, 255, 0.55);
+}
+
+
+/* =========================================
+   DOT GRID
+========================================= */
+
+.hero-dots {
+    position: absolute;
+
+    z-index: 2;
+
+    right: 250px;
+
+    top: 220px;
+
+    width: 105px;
+    height: 105px;
+
+    opacity: 0.65;
+
+    background-image: radial-gradient(
+        circle,
+        #9cc6fa 1.6px,
+        transparent 1.6px
+    );
+
+    background-size: 18px 18px;
+}
+
+
+/* =========================================
+   DASHBOARD
+========================================= */
+
+.dashboard {
+    position: relative;
+
+    z-index: 10;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.55fr)
+        minmax(350px, 0.8fr);
+
+    gap: 20px;
+
     align-items: start;
 }
 
-/* ---- FORM ---- */
 
-.profile-form {
-    background: var(--panel);
+/* =========================================
+   PANELS
+========================================= */
+
+.assessment-panel,
+.results-panel {
+    background: var(--white);
+
     border: 1px solid var(--border);
-    border-radius: 6px;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 6px 22px rgba(25, 45, 70, 0.045);
+}
+
+
+.assessment-panel {
     padding: 28px;
 }
 
-.field-group {
-    padding-bottom: 22px;
-    margin-bottom: 22px;
+
+/* =========================================
+   FORM SECTIONS
+========================================= */
+
+.form-section {
+    margin-bottom: 27px;
+
+    padding-bottom: 27px;
+
     border-bottom: 1px solid var(--border);
 }
 
-.field-group:last-of-type {
-    border-bottom: none;
-    margin-bottom: 24px;
-    padding-bottom: 0;
-}
 
-.field-group h2 {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--muted);
-    margin: 0 0 16px;
-    letter-spacing: 0.01em;
-}
-
-.field-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 14px;
-}
-
-.field-row:last-child {
+.form-section:last-of-type {
     margin-bottom: 0;
 }
 
-label {
+
+.section-heading {
     display: flex;
-    flex-direction: column;
-    gap: 6px;
-    font-size: 13px;
-    color: var(--muted);
+
+    gap: 12px;
+
+    margin-bottom: 20px;
 }
 
-select,
-input {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    color: var(--text);
-    border-radius: 4px;
-    padding: 9px 10px;
-    font-size: 14px;
-}
 
-select:focus,
-input:focus {
-    outline: none;
-    border-color: var(--amber);
-    box-shadow: 0 0 0 3px rgba(242, 169, 59, 0.25);
-}
+.section-number {
+    width: 28px;
+    height: 28px;
 
-#submitBtn:focus-visible {
-    outline: 2px solid var(--amber);
-    outline-offset: 2px;
-}
+    flex: 0 0 28px;
 
-#submitBtn {
-    width: 100%;
-    background: var(--amber);
-    color: #1a1204;
-    border: none;
-    border-radius: 4px;
-    padding: 13px;
-    font-size: 14px;
-    font-weight: 600;
-    font-family: 'Inter', sans-serif;
-    cursor: pointer;
-    transition: filter 0.15s ease;
-}
+    display: grid;
 
-#submitBtn:hover {
-    filter: brightness(1.08);
-}
+    place-items: center;
 
-#submitBtn:active {
-    filter: brightness(0.95);
-}
+    background: #eef2f6;
 
-/* ---- CONSOLE ---- */
+    color: #667385;
 
-.console {
-    position: sticky;
-    top: 32px;
-}
-
-.console-inner {
-    background: var(--panel-raised);
-    border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 32px 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-.gauge-wrap {
-    position: relative;
-    width: 200px;
-}
+    font-family: "IBM Plex Mono", monospace;
 
-.gauge {
-    width: 100%;
-    display: block;
-}
+    font-size: 9px;
 
-#gaugeFill {
-    transition: stroke-dashoffset 0.7s ease, stroke 0.3s ease;
-}
-
-.gauge-readout {
-    position: absolute;
-    bottom: 6px;
-    left: 0;
-    right: 0;
-    text-align: center;
-}
-
-#probValue {
-    display: block;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 30px;
     font-weight: 600;
 }
 
-.gauge-label {
-    display: block;
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 2px;
+
+.section-heading h3 {
+    margin: 1px 0 3px;
+
+    color: #172235;
+
+    font-size: 14px;
+
+    font-weight: 700;
 }
 
-.risk-tag {
-    margin-top: 18px;
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 600;
-    border: 1px solid var(--border);
-    color: var(--muted);
-}
 
-.risk-tag.low {
-    color: var(--green);
-    border-color: var(--green);
-}
-
-.risk-tag.medium {
-    color: var(--amber);
-    border-color: var(--amber);
-}
-
-.risk-tag.high {
-    color: var(--red);
-    border-color: var(--red);
-}
-
-.factors {
-    width: 100%;
-    margin-top: 28px;
-    padding-top: 22px;
-    border-top: 1px solid var(--border);
-}
-
-.factors h3 {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--muted);
-    margin: 0 0 12px;
-}
-
-.factors ul {
-    list-style: none;
+.section-heading p {
     margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+
+    color: #8a95a3;
+
+    font-size: 11px;
 }
 
-.factors li {
+
+/* =========================================
+   FORM GRID
+========================================= */
+
+.field-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 17px 18px;
+}
+
+
+label {
+    display: block;
+}
+
+
+label > span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #647083;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+label em {
+    color: #98a1ad;
+
+    font-style: normal;
+
+    font-weight: 400;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+input,
+select {
+    width: 100%;
+
+    height: 42px;
+
+    padding: 0 11px;
+
+    background: #ffffff;
+
+    color: #172235;
+
+    border: 1px solid #ccd4dd;
+
+    border-radius: 6px;
+
+    outline: none;
+
+    font-size: 12px;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+
+input:hover,
+select:hover {
+    border-color: #aeb8c3;
+}
+
+
+input:focus,
+select:focus {
+    border-color: #6e7e91;
+
+    box-shadow:
+        0 0 0 3px rgba(69, 101, 135, 0.1);
+}
+
+
+.input-prefix {
+    position: relative;
+}
+
+
+.input-prefix b {
+    position: absolute;
+
+    left: 11px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #8a95a3;
+
+    font-size: 12px;
+
+    pointer-events: none;
+}
+
+
+.input-prefix input {
+    padding-left: 26px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.form-actions {
     display: flex;
+
+    justify-content: flex-end;
+
+    gap: 9px;
+}
+
+
+.primary-btn,
+.secondary-btn {
+    height: 43px;
+
+    border-radius: 6px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.primary-btn {
+    min-width: 175px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    background: #172437;
+
+    color: white;
+
+    border: 1px solid #172437;
+
+    transition: background 0.15s ease;
+}
+
+
+.primary-btn:hover {
+    background: #0d1724;
+}
+
+
+.primary-btn:disabled {
+    opacity: 0.6;
+
+    cursor: wait;
+}
+
+
+.button-arrow {
+    font-size: 16px;
+}
+
+
+.secondary-btn {
+    padding: 0 18px;
+
+    background: white;
+
+    color: #647083;
+
+    border: 1px solid #ccd4dd;
+}
+
+
+.secondary-btn:hover {
+    background: #f6f8fa;
+}
+
+
+/* =========================================
+   RESULTS
+========================================= */
+
+.results-panel {
+    position: sticky;
+
+    top: 18px;
+
+    overflow: hidden;
+}
+
+
+.results-header {
+    display: flex;
+
     justify-content: space-between;
-    font-size: 13px;
-    padding-bottom: 10px;
+
+    align-items: flex-start;
+
+    padding: 23px;
+
     border-bottom: 1px solid var(--border);
 }
 
-.factors li:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
+
+.results-header h3 {
+    margin: 0;
+
+    font-size: 17px;
+
+    letter-spacing: -0.025em;
 }
 
-.factors li span.tag {
-    font-family: 'IBM Plex Mono', monospace;
+
+.results-panel .eyebrow {
+    margin-bottom: 7px;
+}
+
+
+.result-status {
+    padding: 5px 8px;
+
+    border-radius: 4px;
+
+    font-family: "IBM Plex Mono", monospace;
+
+    font-size: 8px;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+}
+
+
+.result-status.idle {
+    background: #f1f3f5;
+
+    color: #8a95a3;
+}
+
+
+.result-status.low {
+    background: #eaf7f1;
+
+    color: #167653;
+}
+
+
+.result-status.medium {
+    background: #fff3dd;
+
+    color: #a96200;
+}
+
+
+.result-status.high {
+    background: #fff0f0;
+
+    color: #c03939;
+}
+
+
+/* =========================================
+   SCORE
+========================================= */
+
+.score-card {
+    padding: 25px 23px 22px;
+
+    background: #fafbfd;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.score-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #8a95a3;
+
+    font-family: "IBM Plex Mono", monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 0.06em;
+}
+
+
+.score-value {
+    margin: 12px 0 17px;
+}
+
+
+#probValue {
+    font-family: "IBM Plex Mono", monospace;
+
+    font-size: 54px;
+
+    font-weight: 600;
+
+    line-height: 1;
+
+    letter-spacing: -0.07em;
+}
+
+
+.risk-meter {
+    margin-top: 8px;
+}
+
+
+.meter-track {
+    height: 6px;
+
+    overflow: hidden;
+
+    background: #e4e8ed;
+
+    border-radius: 50px;
+}
+
+
+.meter-fill {
+    width: 0;
+
+    height: 100%;
+
+    background: #b87810;
+
+    border-radius: inherit;
+
+    transition:
+        width 0.65s ease,
+        background 0.25s ease;
+}
+
+
+.meter-labels {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 7px;
+
+    color: #8b95a2;
+
+    font-size: 9px;
+}
+
+
+.risk-tag {
+    display: inline-flex;
+
+    margin-top: 18px;
+
+    padding: 6px 9px;
+
+    border-radius: 5px;
+
     font-size: 11px;
-    padding: 2px 6px;
-    border-radius: 3px;
+
+    font-weight: 600;
 }
 
-.factors li span.tag.raises {
-    background: rgba(226, 92, 92, 0.15);
-    color: var(--red);
+
+.risk-tag.idle {
+    background: #f1f3f5;
+
+    color: #8a95a3;
 }
 
-.factors li span.tag.lowers {
-    background: rgba(63, 184, 139, 0.15);
-    color: var(--green);
+
+.risk-tag.low {
+    background: #eaf7f1;
+
+    color: #167653;
 }
 
-.muted {
-    color: var(--muted);
+
+.risk-tag.medium {
+    background: #fff3dd;
+
+    color: #a96200;
 }
 
-@media (max-width: 760px) {
-    .layout {
+
+.risk-tag.high {
+    background: #fff0f0;
+
+    color: #c03939;
+}
+
+
+/* =========================================
+   RESULT SECTIONS
+========================================= */
+
+.result-section {
+    padding: 20px 23px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.result-section-title {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 13px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+.result-section-title small {
+    color: #8a95a3;
+
+    font-size: 9px;
+
+    font-weight: 500;
+}
+
+
+/* =========================================
+   SNAPSHOT
+========================================= */
+
+.snapshot-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+
+    border-radius: 7px;
+}
+
+
+.snapshot-grid > div {
+    min-height: 62px;
+
+    padding: 11px 12px;
+}
+
+
+.snapshot-grid > div:nth-child(odd) {
+    border-right: 1px solid var(--border);
+}
+
+
+.snapshot-grid > div:nth-child(-n+2) {
+    border-bottom: 1px solid var(--border);
+}
+
+
+.snapshot-grid span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #8a95a3;
+
+    font-size: 9px;
+}
+
+
+.snapshot-grid strong {
+    display: block;
+
+    overflow: hidden;
+
+    color: #172235;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   SIGNALS
+========================================= */
+
+.signal-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.signal {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding: 10px 11px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 6px;
+}
+
+
+.signal-name {
+    color: #687587;
+
+    font-size: 10px;
+}
+
+
+.signal-tag {
+    flex-shrink: 0;
+
+    padding: 4px 6px;
+
+    border-radius: 4px;
+
+    font-family: "IBM Plex Mono", monospace;
+
+    font-size: 8px;
+
+    font-weight: 600;
+}
+
+
+.signal-tag.raises {
+    color: #c03939;
+
+    background: #fff0f0;
+}
+
+
+.signal-tag.lowers {
+    color: #167653;
+
+    background: #eaf7f1;
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.empty-state {
+    display: flex;
+
+    gap: 10px;
+
+    padding: 13px;
+
+    background: #f8fafb;
+
+    border: 1px dashed #ccd4dd;
+
+    border-radius: 7px;
+}
+
+
+.empty-icon {
+    width: 22px;
+    height: 22px;
+
+    flex: 0 0 22px;
+
+    display: grid;
+
+    place-items: center;
+
+    background: #e9edf1;
+
+    color: #8994a2;
+
+    border-radius: 4px;
+
+    font-family: "IBM Plex Mono", monospace;
+
+    font-size: 10px;
+}
+
+
+.empty-state strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #172235;
+
+    font-size: 10px;
+}
+
+
+.empty-state p {
+    margin: 0;
+
+    color: #8a95a3;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   RESULT NOTE
+========================================= */
+
+.result-note {
+    display: flex;
+
+    gap: 8px;
+
+    padding: 17px 23px;
+
+    background: #fafbfd;
+}
+
+
+.result-note > span {
+    width: 17px;
+    height: 17px;
+
+    flex: 0 0 17px;
+
+    display: grid;
+
+    place-items: center;
+
+    background: #e9edf1;
+
+    color: #687587;
+
+    border-radius: 50%;
+
+    font-size: 10px;
+}
+
+
+.result-note p {
+    margin: 0;
+
+    color: #8a95a3;
+
+    font-size: 9px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding-top: 20px;
+
+    color: #8994a2;
+
+    font-family: "IBM Plex Mono", monospace;
+
+    font-size: 8px;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1050px) {
+
+    .app-shell {
+        width: calc(100% - 40px);
+    }
+
+    .dashboard {
         grid-template-columns: 1fr;
     }
 
-    .field-row {
-        grid-template-columns: 1fr;
-    }
-
-    .console {
+    .results-panel {
         position: static;
+    }
+
+    .model-card {
+        right: 0;
+    }
+
+    .intro-content {
+        width: 650px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .app-shell {
+        width: calc(100% - 28px);
+
+        padding-top: 18px;
+    }
+
+
+    .topbar {
+        height: 50px;
+    }
+
+
+    .brand h1 {
+        font-size: 11px;
+    }
+
+
+    .top-nav {
+        display: none;
+    }
+
+
+    .page-intro {
+        min-height: auto;
+
+        padding: 38px 0 30px;
+    }
+
+
+    .intro-content {
+        width: 100%;
+    }
+
+
+    .page-intro h2 {
+        font-size: 42px;
+    }
+
+
+    .page-intro > .intro-content > p {
+        width: 100%;
+
+        font-size: 13px;
+    }
+
+
+    .model-card {
+        position: relative;
+
+        top: auto;
+        right: auto;
+
+        width: 100%;
+
+        margin-top: 30px;
+    }
+
+
+    .hero-arc {
+        opacity: 0.45;
+    }
+
+
+    .hero-dots {
+        display: none;
+    }
+
+
+    .hero-benefits {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 18px;
+    }
+
+
+    .benefit-divider {
+        display: none;
+    }
+
+
+    .field-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .assessment-panel {
+        padding: 20px;
+    }
+
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+
+    .primary-btn,
+    .secondary-btn {
+        width: 100%;
+    }
+
+
+    .footer {
+        flex-direction: column;
+
+        gap: 7px;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 430px) {
+
+    .page-intro h2 {
+        font-size: 34px;
+    }
+
+
+    #probValue {
+        font-size: 46px;
+    }
+
+
+    .snapshot-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .snapshot-grid > div {
+        border-right: none !important;
+
+        border-bottom: 1px solid var(--border) !important;
+    }
+
+
+    .snapshot-grid > div:last-child {
+        border-bottom: none !important;
     }
 }

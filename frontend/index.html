@@ -4,218 +4,1000 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Churn Risk Console</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap"
-        rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap"
+        rel="stylesheet"
+    >
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="shell">
+<div class="app-shell">
 
-        <header class="masthead">
-            <h1>Churn Risk Console</h1>
-            <p>Assess a customer's likelihood to leave, and see what's driving the score.</p>
-        </header>
+    <!-- ================= HEADER ================= -->
 
-        <div class="layout">
+    <header class="topbar">
 
-            <!-- LEFT: FORM -->
-            <form id="churnForm" class="profile-form">
+        <div class="brand">
+            <h1>CHURN RISK CONSOLE</h1>
+        </div>
 
-                <section class="field-group">
-                    <h2>Profile</h2>
-                    <div class="field-row">
-                        <label>Gender
-                            <select name="Gender">
-                                <option>Male</option>
-                                <option>Female</option>
-                            </select>
-                        </label>
-                        <label>Senior citizen
-                            <select name="Senior_Citizen">
-                                <option>No</option>
-                                <option>Yes</option>
-                            </select>
-                        </label>
-                    </div>
-                    <div class="field-row">
-                        <label>Partner
-                            <select name="Partner">
-                                <option>Yes</option>
-                                <option>No</option>
-                            </select>
-                        </label>
-                        <label>Dependents
-                            <select name="Dependents">
-                                <option>No</option>
-                                <option>Yes</option>
-                            </select>
-                        </label>
-                    </div>
-                </section>
+        <nav class="top-nav">
+            <span>Customer Insights</span>
+            <i></i>
+            <span>Smarter Retention</span>
+        </nav>
 
-                <section class="field-group">
-                    <h2>Account</h2>
-                    <div class="field-row">
-                        <label>Tenure (months)
-                            <input type="number" name="Tenure_Months" value="5" min="0" required>
-                        </label>
-                        <label>Contract
-                            <select name="Contract">
-                                <option>Month-to-month</option>
-                                <option>One year</option>
-                                <option>Two year</option>
-                            </select>
-                        </label>
-                    </div>
-                    <div class="field-row">
-                        <label>Paperless billing
-                            <select name="Paperless_Billing">
-                                <option>Yes</option>
-                                <option>No</option>
-                            </select>
-                        </label>
-                        <label>Payment method
-                            <select name="Payment_Method">
-                                <option>Electronic check</option>
-                                <option>Mailed check</option>
-                                <option>Bank transfer (automatic)</option>
-                                <option>Credit card (automatic)</option>
-                            </select>
-                        </label>
-                    </div>
-                </section>
+    </header>
 
-                <section class="field-group">
-                    <h2>Services</h2>
-                    <div class="field-row">
-                        <label>Phone service
-                            <select name="Phone_Service">
-                                <option>Yes</option>
-                                <option>No</option>
-                            </select>
-                        </label>
-                        <label>Multiple lines
-                            <select name="Multiple_Lines">
-                                <option>No</option>
-                                <option>Yes</option>
-                                <option>No phone service</option>
-                            </select>
-                        </label>
-                    </div>
-                    <div class="field-row">
-                        <label>Internet service
-                            <select name="Internet_Service">
-                                <option>Fiber optic</option>
-                                <option>DSL</option>
-                                <option>No</option>
-                            </select>
-                        </label>
-                        <label>Online security
-                            <select name="Online_Security">
-                                <option>No</option>
-                                <option>Yes</option>
-                                <option>No internet service</option>
-                            </select>
-                        </label>
-                    </div>
-                    <div class="field-row">
-                        <label>Online backup
-                            <select name="Online_Backup">
-                                <option>No</option>
-                                <option>Yes</option>
-                                <option>No internet service</option>
-                            </select>
-                        </label>
-                        <label>Device protection
-                            <select name="Device_Protection">
-                                <option>No</option>
-                                <option>Yes</option>
-                                <option>No internet service</option>
-                            </select>
-                        </label>
-                    </div>
-                    <div class="field-row">
-                        <label>Tech support
-                            <select name="Tech_Support">
-                                <option>No</option>
-                                <option>Yes</option>
-                                <option>No internet service</option>
-                            </select>
-                        </label>
-                        <label>Streaming TV
-                            <select name="Streaming_TV">
-                                <option>Yes</option>
-                                <option>No</option>
-                                <option>No internet service</option>
-                            </select>
-                        </label>
-                    </div>
-                    <div class="field-row">
-                        <label>Streaming movies
-                            <select name="Streaming_Movies">
-                                <option>Yes</option>
-                                <option>No</option>
-                                <option>No internet service</option>
-                            </select>
-                        </label>
-                        <span></span>
-                    </div>
-                </section>
 
-                <section class="field-group">
-                    <h2>Billing</h2>
-                    <div class="field-row">
-                        <label>Monthly charges
-                            <input type="number" step="0.1" name="Monthly_Charges" value="85.5" required>
-                        </label>
-                        <label>Total charges
-                            <input type="number" step="0.1" name="Total_Charges" value="425.0" required>
-                        </label>
-                    </div>
-                </section>
+    <!-- ================= HERO ================= -->
 
-                <button type="submit" id="submitBtn">Run assessment</button>
-            </form>
+    <section class="page-intro">
 
-            <!-- RIGHT: RISK CONSOLE -->
-            <aside class="console">
-                <div class="console-inner">
+        <!-- Decorative background -->
+        <div class="hero-arc hero-arc-one"></div>
+        <div class="hero-arc hero-arc-two"></div>
+        <div class="hero-arc hero-arc-three"></div>
 
-                    <div class="gauge-wrap">
-                        <svg viewBox="0 0 200 120" class="gauge">
-                            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#233040" stroke-width="14"
-                                stroke-linecap="round" />
-                            <path id="gaugeFill" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#F2A93B"
-                                stroke-width="14" stroke-linecap="round" stroke-dasharray="251.2"
-                                stroke-dashoffset="251.2" />
+        <div class="hero-dots"></div>
+
+
+        <!-- HERO CONTENT -->
+
+        <div class="intro-content">
+
+            <div class="assessment-label">
+
+                <span>CUSTOMER ASSESSMENT</span>
+
+                <i></i>
+
+            </div>
+
+
+            <h2>
+                Evaluate customer
+                <span>churn risk</span>
+            </h2>
+
+
+            <p>
+                Enter the customer's account, service and billing information
+                to generate a churn probability and risk assessment.
+            </p>
+
+
+            <!-- HERO BENEFITS -->
+
+            <div class="hero-benefits">
+
+
+                <!-- Benefit 1 -->
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+
+                        <svg viewBox="0 0 24 24" fill="none">
+
+                            <circle
+                                cx="12"
+                                cy="8"
+                                r="3.2"
+                            />
+
+                            <path
+                                d="M5.5 19c.6-3.2 2.8-5 6.5-5s5.9 1.8 6.5 5"
+                            />
+
                         </svg>
-                        <div class="gauge-readout">
-                            <span id="probValue">—</span>
-                            <span class="gauge-label">churn probability</span>
-                        </div>
+
                     </div>
 
-                    <div id="riskTag" class="risk-tag idle">Awaiting input</div>
 
-                    <div class="factors">
-                        <h3>Signal read</h3>
-                        <ul id="factorList">
-                            <li class="muted">Run an assessment to see the drivers behind this score.</li>
-                        </ul>
+                    <div>
+
+                        <strong>Understand</strong>
+
+                        <span>
+                            Customer behaviour
+                        </span>
+
                     </div>
 
                 </div>
-            </aside>
+
+
+                <div class="benefit-divider"></div>
+
+
+                <!-- Benefit 2 -->
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+
+                        <svg viewBox="0 0 24 24" fill="none">
+
+                            <path d="M5 19V10" />
+                            <path d="M10 19V5" />
+                            <path d="M15 19v-7" />
+                            <path d="M20 19V8" />
+
+                            <path d="M4 19h17" />
+
+                        </svg>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>Predict</strong>
+
+                        <span>
+                            Churn probability
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="benefit-divider"></div>
+
+
+                <!-- Benefit 3 -->
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+
+                        <svg viewBox="0 0 24 24" fill="none">
+
+                            <path
+                                d="M12 3l7 3v5.5c0 4.3-2.7 7.5-7 9.5-4.3-2-7-5.2-7-9.5V6l7-3z"
+                            />
+
+                            <path d="M9 12l2 2 4-4" />
+
+                        </svg>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>Take action</strong>
+
+                        <span>
+                            Improve retention
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
-    </div>
 
-    <script src="script.js"></script>
+
+        <!-- MODEL CARD -->
+
+        <div class="model-card">
+
+            <div class="model-label">
+                MODEL
+            </div>
+
+            <div class="model-line"></div>
+
+            <h3>
+                XGBoost
+            </h3>
+
+            <p>
+                Classification
+            </p>
+
+
+            <div class="api-status">
+
+                <span class="api-dot"></span>
+
+                <span>
+                    Prediction API Online
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <main class="dashboard">
+
+
+        <!-- ================= FORM ================= -->
+
+        <section class="assessment-panel">
+
+            <form id="churnForm">
+
+
+                <!-- PROFILE -->
+
+                <div class="form-section">
+
+                    <div class="section-heading">
+
+                        <div class="section-number">
+                            01
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Customer profile
+                            </h3>
+
+                            <p>
+                                Basic customer information
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="field-grid">
+
+
+                        <label>
+
+                            <span>
+                                Gender
+                            </span>
+
+                            <select name="Gender">
+
+                                <option>Male</option>
+                                <option>Female</option>
+
+                            </select>
+
+                        </label>
+
+
+                        <label>
+
+                            <span>
+                                Senior citizen
+                            </span>
+
+                            <select name="Senior_Citizen">
+
+                                <option>No</option>
+                                <option>Yes</option>
+
+                            </select>
+
+                        </label>
+
+
+                        <label>
+
+                            <span>
+                                Partner
+                            </span>
+
+                            <select name="Partner">
+
+                                <option>Yes</option>
+                                <option>No</option>
+
+                            </select>
+
+                        </label>
+
+
+                        <label>
+
+                            <span>
+                                Dependents
+                            </span>
+
+                            <select name="Dependents">
+
+                                <option>No</option>
+                                <option>Yes</option>
+
+                            </select>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACCOUNT -->
+
+                <div class="form-section">
+
+                    <div class="section-heading">
+
+                        <div class="section-number">
+                            02
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Account details
+                            </h3>
+
+                            <p>
+                                Contract and account preferences
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="field-grid">
+
+
+                        <label>
+
+                            <span>
+                                Tenure
+                                <em>months</em>
+                            </span>
+
+                            <input
+                                type="number"
+                                name="Tenure_Months"
+                                value="5"
+                                min="0"
+                                required
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            <span>
+                                Contract
+                            </span>
+
+                            <select name="Contract">
+
+                                <option>
+                                    Month-to-month
+                                </option>
+
+                                <option>
+                                    One year
+                                </option>
+
+                                <option>
+                                    Two year
+                                </option>
+
+                            </select>
+
+                        </label>
+
+
+                        <label>
+
+                            <span>
+                                Paperless billing
+                            </span>
+
+                            <select name="Paperless_Billing">
+
+                                <option>Yes</option>
+                                <option>No</option>
+
+                            </select>
+
+                        </label>
+
+
+                        <label>
+
+                            <span>
+                                Payment method
+                            </span>
+
+                            <select name="Payment_Method">
+
+                                <option>
+                                    Electronic check
+                                </option>
+
+                                <option>
+                                    Mailed check
+                                </option>
+
+                                <option>
+                                    Bank transfer (automatic)
+                                </option>
+
+                                <option>
+                                    Credit card (automatic)
+                                </option>
+
+                            </select>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SERVICES -->
+
+                <div class="form-section">
+
+                    <div class="section-heading">
+
+                        <div class="section-number">
+                            03
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Services
+                            </h3>
+
+                            <p>
+                                Products and support currently active
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="field-grid">
+
+
+                        <label>
+
+                            <span>
+                                Phone service
+                            </span>
+
+                            <select name="Phone_Service">
+
+                                <option>Yes</option>
+                                <option>No</option>
+
+                            </select>
+
+                        </label>
+
+
+                        <label>
+
+                            <span>
+                                Multiple lines
+                            </span>
+
+                            <select name="Multiple_Lines">
+
+                                <option>No</option>
+                                <option>Yes</option>
+                                <option>No phone service</option>
+
+                            </select>
+
+                        </label>
+
+
+                        <label>
+
+                            <span>
+                                Internet service
+                            </span>
+
+                            <select name="Internet_Service">
+
+                                <option>Fiber optic</option>
+                                <option>DSL</option>
+                                <option>No</option>
+
+                            </select>
+
+                        </label>
+
+
+                        <label>
+
+                            <span>
+                                Online security
+                            </span>
+
+                            <select name="Online_Security">
+
+                                <option>No</option>
+                                <option>Yes</option>
+                                <option>No internet service</option>
+
+                            </select>
+
+                        </label>
+
+
+                        <label>
+
+                            <span>
+                                Online backup
+                            </span>
+
+                            <select name="Online_Backup">
+
+                                <option>No</option>
+                                <option>Yes</option>
+                                <option>No internet service</option>
+
+                            </select>
+
+                        </label>
+
+
+                        <label>
+
+                            <span>
+                                Device protection
+                            </span>
+
+                            <select name="Device_Protection">
+
+                                <option>No</option>
+                                <option>Yes</option>
+                                <option>No internet service</option>
+
+                            </select>
+
+                        </label>
+
+
+                        <label>
+
+                            <span>
+                                Tech support
+                            </span>
+
+                            <select name="Tech_Support">
+
+                                <option>No</option>
+                                <option>Yes</option>
+                                <option>No internet service</option>
+
+                            </select>
+
+                        </label>
+
+
+                        <label>
+
+                            <span>
+                                Streaming TV
+                            </span>
+
+                            <select name="Streaming_TV">
+
+                                <option>Yes</option>
+                                <option>No</option>
+                                <option>No internet service</option>
+
+                            </select>
+
+                        </label>
+
+
+                        <label>
+
+                            <span>
+                                Streaming movies
+                            </span>
+
+                            <select name="Streaming_Movies">
+
+                                <option>Yes</option>
+                                <option>No</option>
+                                <option>No internet service</option>
+
+                            </select>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BILLING -->
+
+                <div class="form-section">
+
+                    <div class="section-heading">
+
+                        <div class="section-number">
+                            04
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Billing
+                            </h3>
+
+                            <p>
+                                Current customer billing information
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="field-grid">
+
+
+                        <label>
+
+                            <span>
+                                Monthly charges
+                            </span>
+
+                            <div class="input-prefix">
+
+                                <b>$</b>
+
+                                <input
+                                    type="number"
+                                    step="0.1"
+                                    name="Monthly_Charges"
+                                    value="85.5"
+                                    required
+                                >
+
+                            </div>
+
+                        </label>
+
+
+                        <label>
+
+                            <span>
+                                Total charges
+                            </span>
+
+                            <div class="input-prefix">
+
+                                <b>$</b>
+
+                                <input
+                                    type="number"
+                                    step="0.1"
+                                    name="Total_Charges"
+                                    value="425"
+                                    required
+                                >
+
+                            </div>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACTIONS -->
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        id="resetBtn"
+                        class="secondary-btn"
+                    >
+                        Reset
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        id="submitBtn"
+                        class="primary-btn"
+                    >
+
+                        <span id="buttonText">
+                            Run assessment
+                        </span>
+
+                        <span class="button-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- ================= RESULTS ================= -->
+
+        <aside class="results-panel">
+
+
+            <div class="results-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        ASSESSMENT RESULT
+                    </span>
+
+                    <h3>
+                        Churn probability
+                    </h3>
+
+                </div>
+
+
+                <div
+                    id="resultStatus"
+                    class="result-status idle"
+                >
+                    Waiting
+                </div>
+
+            </div>
+
+
+            <!-- SCORE -->
+
+            <div class="score-card">
+
+                <div class="score-top">
+
+                    <span>
+                        ESTIMATED PROBABILITY
+                    </span>
+
+                    <span id="predictionLabel">
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="score-value">
+
+                    <span id="probValue">
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="risk-meter">
+
+                    <div class="meter-track">
+
+                        <div
+                            id="meterFill"
+                            class="meter-fill"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="meter-labels">
+
+                        <span>Low</span>
+                        <span>Medium</span>
+                        <span>High</span>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="riskTag"
+                    class="risk-tag idle"
+                >
+                    Awaiting assessment
+                </div>
+
+            </div>
+
+
+            <!-- SNAPSHOT -->
+
+            <div class="result-section">
+
+                <div class="result-section-title">
+
+                    <span>
+                        Customer snapshot
+                    </span>
+
+                </div>
+
+
+                <div class="snapshot-grid">
+
+                    <div>
+
+                        <span>
+                            Contract
+                        </span>
+
+                        <strong id="summaryContract">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Tenure
+                        </span>
+
+                        <strong id="summaryTenure">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Monthly bill
+                        </span>
+
+                        <strong id="summaryMonthly">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Internet
+                        </span>
+
+                        <strong id="summaryInternet">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SIGNALS -->
+
+            <div class="result-section signals-section">
+
+                <div class="result-section-title">
+
+                    <span>
+                        Risk signals
+                    </span>
+
+                    <small id="signalCount">
+                        0 signals
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="factorList"
+                    class="signal-list"
+                >
+
+                    <div class="empty-state">
+
+                        <div class="empty-icon">
+                            —
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                No assessment yet
+                            </strong>
+
+                            <p>
+                                Run the assessment to see the
+                                factors associated with the prediction.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NOTE -->
+
+            <div class="result-note">
+
+                <span>
+                    i
+                </span>
+
+                <p>
+                    The prediction is a model-generated estimate and should
+                    be used alongside customer context and business rules.
+                </p>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <span>
+            Customer Churn Prediction
+        </span>
+
+        <span>
+            FastAPI · XGBoost · REST API
+        </span>
+
+    </footer>
+
+</div>
+
+
+<script src="script.js"></script>
+
 </body>
-
 </html>
