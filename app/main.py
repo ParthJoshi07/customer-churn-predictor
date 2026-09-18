@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 from app.schemas import CustomerInput, PredictionOutput
@@ -17,7 +18,7 @@ app.add_middleware(
 
 @app.get("/")
 def root():
-    return {"status": "running"}
+    return FileResponse(BASE_DIR / "frontend" / "index.html")
 
 @app.post("/predict", response_model=PredictionOutput)
 def predict(customer: CustomerInput):
