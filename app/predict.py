@@ -1,9 +1,11 @@
 import joblib
 import pandas as pd 
+from pathlib import Path
 
-model = joblib.load("models/churn_model.pkl")
-scaler = joblib.load("models/scaler.pkl")
-encoders = joblib.load("models/encoder.pkl")
+MODELS_DIR = Path(__file__).resolve().parent.parent / "models"
+model = joblib.load(MODELS_DIR / "churn_model.pkl")
+scaler = joblib.load(MODELS_DIR / "scaler.pkl")
+encoders = joblib.load(MODELS_DIR / "encoder.pkl")
 
 # underscore names (pydantic) -> original column names (training data)
 COLUMN_MAP = {

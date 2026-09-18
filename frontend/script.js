@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:8000/predict";
+const API_URL = "/predict";
 
 const form = document.getElementById("churnForm");
 const submitBtn = document.getElementById("submitBtn");
@@ -35,7 +35,6 @@ form.addEventListener("submit", async (event) => {
     setLoadingState(true);
 
     try {
-
         const response = await fetch(API_URL, {
             method: "POST",
 

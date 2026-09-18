@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: customer-churn-predictor
+    runtime: docker
+    plan: free
+    healthCheckPath: /
