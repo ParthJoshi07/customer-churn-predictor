@@ -1,11 +1,11 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 class CustomerInput(BaseModel):
     Gender: str
     Senior_Citizen: str
     Partner: str
     Dependents: str
-    Tenure_Months: int
+    Tenure_Months: int = Field(ge=0, le=100)
     Phone_Service: str
     Multiple_Lines: str
     Internet_Service: str
@@ -18,8 +18,8 @@ class CustomerInput(BaseModel):
     Contract: str
     Paperless_Billing: str
     Payment_Method: str
-    Monthly_Charges: float
-    Total_Charges: float
+    Monthly_Charges: float = Field(ge=0)
+    Total_Charges: float = Field(ge=0)
 
 class PredictionOutput(BaseModel):
     churn_prediction: int

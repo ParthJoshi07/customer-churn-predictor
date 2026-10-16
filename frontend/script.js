@@ -1,4 +1,7 @@
-const API_URL = "/predict";
+const API_URL =
+    window.location.protocol === "file:"
+        ? "http://127.0.0.1:8000/predict"
+        : "/predict";
 
 const form = document.getElementById("churnForm");
 const submitBtn = document.getElementById("submitBtn");
