@@ -1,7 +1,4 @@
-const API_URL =
-    window.location.protocol === "file:"
-        ? "http://127.0.0.1:8000/predict"
-        : "/predict";
+const API_URL = "http://127.0.0.1:8000/predict";
 
 const form = document.getElementById("churnForm");
 const submitBtn = document.getElementById("submitBtn");
@@ -23,6 +20,46 @@ const summaryContract = document.getElementById("summaryContract");
 const summaryTenure = document.getElementById("summaryTenure");
 const summaryMonthly = document.getElementById("summaryMonthly");
 const summaryInternet = document.getElementById("summaryInternet");
+const themeToggle = document.getElementById("themeToggle");
+
+/* -------------------------
+   THEME SWITCHER
+------------------------- */
+
+function initTheme() {
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialTheme = savedTheme || (prefersDark ? "dark" : "light");
+
+    setTheme(initialTheme);
+
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            const currentTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+            setTheme(newTheme);
+        });
+    }
+}
+
+function setTheme(theme) {
+    if (theme === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+        if (themeToggle) themeToggle.textContent = "Light mode";
+        localStorage.setItem("theme", "dark");
+    } else {
+        document.documentElement.removeAttribute("data-theme");
+        if (themeToggle) themeToggle.textContent = "Dark mode";
+        localStorage.setItem("theme", "light");
+    }
+
+    /* Update meter color if already populated */
+    if (meterFill && meterFill.dataset.level) {
+        meterFill.style.background = getRiskColor(meterFill.dataset.level);
+    }
+}
+
+initTheme();
 
 
 /* -------------------------
@@ -38,6 +75,7 @@ form.addEventListener("submit", async (event) => {
     setLoadingState(true);
 
     try {
+
         const response = await fetch(API_URL, {
             method: "POST",
 
@@ -181,6 +219,7 @@ function renderResult(result, inputs) {
     probValue.textContent =
         `${percentage.toFixed(1)}%`;
 
+    meterFill.dataset.level = riskLevel;
     meterFill.style.width =
         `${percentage}%`;
 
@@ -259,14 +298,22 @@ function getRiskLevel(probability) {
 ------------------------- */
 
 function getRiskColor(level) {
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
 
-    const colors = {
-        Low: "#16845b",
-        Medium: "#b56a00",
-        High: "#c63d3d"
+    const lightColors = {
+        Low: "#1b4d3e",
+        Medium: "#8c5800",
+        High: "#991b1b"
     };
 
-    return colors[level] || "#b56a00";
+    const darkColors = {
+        Low: "#48a37d",
+        Medium: "#c98000",
+        High: "#c74646"
+    };
+
+    const colors = isDark ? darkColors : lightColors;
+    return colors[level] || (isDark ? "#888888" : "#555555");
 }
 
 
@@ -588,7 +635,7 @@ function formatCurrency(value) {
         return "—";
     }
 
-    return `$${value.toFixed(2)}`;
+    return `₹${value.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 }
 
 

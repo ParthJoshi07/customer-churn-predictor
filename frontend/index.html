@@ -34,6 +34,8 @@
             <span>Customer Insights</span>
             <i></i>
             <span>Smarter Retention</span>
+            <i></i>
+            <button id="themeToggle" type="button" class="theme-toggle">Dark mode</button>
         </nav>
 
     </header>
@@ -43,182 +45,33 @@
 
     <section class="page-intro">
 
-        <!-- Decorative background -->
-        <div class="hero-arc hero-arc-one"></div>
-        <div class="hero-arc hero-arc-two"></div>
-        <div class="hero-arc hero-arc-three"></div>
-
-        <div class="hero-dots"></div>
-
-
-        <!-- HERO CONTENT -->
-
         <div class="intro-content">
 
             <div class="assessment-label">
-
                 <span>CUSTOMER ASSESSMENT</span>
-
-                <i></i>
-
             </div>
 
-
-            <h2>
-                Evaluate customer
-                <span>churn risk</span>
-            </h2>
-
+            <h2>Customer churn risk</h2>
 
             <p>
-                Enter the customer's account, service and billing information
-                to generate a churn probability and risk assessment.
+                Enter account, service, and billing information to calculate customer churn probability and risk level.
             </p>
-
-
-            <!-- HERO BENEFITS -->
-
-            <div class="hero-benefits">
-
-
-                <!-- Benefit 1 -->
-
-                <div class="benefit">
-
-                    <div class="benefit-icon">
-
-                        <svg viewBox="0 0 24 24" fill="none">
-
-                            <circle
-                                cx="12"
-                                cy="8"
-                                r="3.2"
-                            />
-
-                            <path
-                                d="M5.5 19c.6-3.2 2.8-5 6.5-5s5.9 1.8 6.5 5"
-                            />
-
-                        </svg>
-
-                    </div>
-
-
-                    <div>
-
-                        <strong>Understand</strong>
-
-                        <span>
-                            Customer behaviour
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="benefit-divider"></div>
-
-
-                <!-- Benefit 2 -->
-
-                <div class="benefit">
-
-                    <div class="benefit-icon">
-
-                        <svg viewBox="0 0 24 24" fill="none">
-
-                            <path d="M5 19V10" />
-                            <path d="M10 19V5" />
-                            <path d="M15 19v-7" />
-                            <path d="M20 19V8" />
-
-                            <path d="M4 19h17" />
-
-                        </svg>
-
-                    </div>
-
-
-                    <div>
-
-                        <strong>Predict</strong>
-
-                        <span>
-                            Churn probability
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="benefit-divider"></div>
-
-
-                <!-- Benefit 3 -->
-
-                <div class="benefit">
-
-                    <div class="benefit-icon">
-
-                        <svg viewBox="0 0 24 24" fill="none">
-
-                            <path
-                                d="M12 3l7 3v5.5c0 4.3-2.7 7.5-7 9.5-4.3-2-7-5.2-7-9.5V6l7-3z"
-                            />
-
-                            <path d="M9 12l2 2 4-4" />
-
-                        </svg>
-
-                    </div>
-
-
-                    <div>
-
-                        <strong>Take action</strong>
-
-                        <span>
-                            Improve retention
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
 
         </div>
 
-
-        <!-- MODEL CARD -->
-
         <div class="model-card">
 
-            <div class="model-label">
-                MODEL
-            </div>
+            <div class="model-label">MODEL</div>
 
             <div class="model-line"></div>
 
-            <h3>
-                XGBoost
-            </h3>
+            <h3>XGBoost</h3>
 
-            <p>
-                Classification
-            </p>
-
+            <p>Binary Classifier</p>
 
             <div class="api-status">
-
                 <span class="api-dot"></span>
-
-                <span>
-                    Prediction API Online
-                </span>
-
+                <span>FastAPI Service</span>
             </div>
 
         </div>
@@ -374,7 +227,6 @@
                                 name="Tenure_Months"
                                 value="5"
                                 min="0"
-                                max="100"
                                 required
                             >
 
@@ -675,14 +527,13 @@
 
                             <div class="input-prefix">
 
-                                <b>$</b>
+                                <b>₹</b>
 
                                 <input
                                     type="number"
                                     step="0.1"
                                     name="Monthly_Charges"
                                     value="85.5"
-                                    min="0"
                                     required
                                 >
 
@@ -699,14 +550,13 @@
 
                             <div class="input-prefix">
 
-                                <b>$</b>
+                                <b>₹</b>
 
                                 <input
                                     type="number"
                                     step="0.1"
                                     name="Total_Charges"
                                     value="425"
-                                    min="0"
                                     required
                                 >
 
